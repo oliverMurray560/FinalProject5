@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C28E1A42B21138100C24ABA /* ViewControllerWar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28E1A32B21138100C24ABA /* ViewControllerWar.swift */; };
 		4C7C36A82B1F7D2C00A4FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36A72B1F7D2C00A4FCEC /* AppDelegate.swift */; };
 		4C7C36AA2B1F7D2C00A4FCEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36A92B1F7D2C00A4FCEC /* SceneDelegate.swift */; };
 		4C7C36AC2B1F7D2C00A4FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36AB2B1F7D2C00A4FCEC /* ViewController.swift */; };
@@ -17,6 +18,8 @@
 		4C7C36C22B1F7D2E00A4FCEC /* final_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36C12B1F7D2E00A4FCEC /* final_projectTests.swift */; };
 		4C7C36CC2B1F7D2E00A4FCEC /* final_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36CB2B1F7D2E00A4FCEC /* final_projectUITests.swift */; };
 		4C7C36CE2B1F7D2E00A4FCEC /* final_projectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C36CD2B1F7D2E00A4FCEC /* final_projectUITestsLaunchTests.swift */; };
+		4CB755AF2B20C721007830CB /* ViewControllerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB755AE2B20C721007830CB /* ViewControllerGame.swift */; };
+		4CB755B12B20C9ED007830CB /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB755B02B20C9ED007830CB /* Dice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C28E1A32B21138100C24ABA /* ViewControllerWar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWar.swift; sourceTree = "<group>"; };
 		4C7C36A42B1F7D2C00A4FCEC /* final project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "final project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7C36A72B1F7D2C00A4FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C7C36A92B1F7D2C00A4FCEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		4C7C36C72B1F7D2E00A4FCEC /* final projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "final projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7C36CB2B1F7D2E00A4FCEC /* final_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = final_projectUITests.swift; sourceTree = "<group>"; };
 		4C7C36CD2B1F7D2E00A4FCEC /* final_projectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = final_projectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4CB755AE2B20C721007830CB /* ViewControllerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGame.swift; sourceTree = "<group>"; };
+		4CB755B02B20C9ED007830CB /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,9 @@
 				4C7C36A92B1F7D2C00A4FCEC /* SceneDelegate.swift */,
 				4C7C36AB2B1F7D2C00A4FCEC /* ViewController.swift */,
 				4C7C36AD2B1F7D2C00A4FCEC /* Main.storyboard */,
+				4C28E1A32B21138100C24ABA /* ViewControllerWar.swift */,
+				4CB755AE2B20C721007830CB /* ViewControllerGame.swift */,
+				4CB755B02B20C9ED007830CB /* Dice.swift */,
 				4C7C36B32B1F7D2E00A4FCEC /* Assets.xcassets */,
 				4C7C36B52B1F7D2E00A4FCEC /* LaunchScreen.storyboard */,
 				4C7C36B82B1F7D2E00A4FCEC /* Info.plist */,
@@ -261,9 +270,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB755AF2B20C721007830CB /* ViewControllerGame.swift in Sources */,
 				4C7C36AC2B1F7D2C00A4FCEC /* ViewController.swift in Sources */,
 				4C7C36A82B1F7D2C00A4FCEC /* AppDelegate.swift in Sources */,
 				4C7C36B22B1F7D2C00A4FCEC /* final_project.xcdatamodeld in Sources */,
+				4C28E1A42B21138100C24ABA /* ViewControllerWar.swift in Sources */,
+				4CB755B12B20C9ED007830CB /* Dice.swift in Sources */,
 				4C7C36AA2B1F7D2C00A4FCEC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
