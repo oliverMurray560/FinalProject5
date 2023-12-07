@@ -33,7 +33,7 @@ class ViewControllerGame: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         money = delegate.show()
-        moneyOutlet.text = String(money)
+        moneyOutlet.text = "$\(money)"
         
         //String(delegate.show())
         
@@ -42,7 +42,7 @@ class ViewControllerGame: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         money = delegate.show()
-        moneyOutlet.text = String(money)
+        moneyOutlet.text = "$\(money)"
     }
     @IBAction func rollAction(_ sender: Any) {
         if bet <= delegate.show(){
@@ -159,7 +159,7 @@ class ViewControllerGame: UIViewController {
             
             recordOutlet.text = "Wins: \(wins) Loses: \(loses)"
             money = delegate.show()
-            moneyOutlet.text = String(money)
+            moneyOutlet.text = "$\(money)"
         }
         else{
             let alert = UIAlertController(title: "Invalid", message: "Can't bet more than you own", preferredStyle: .alert)
