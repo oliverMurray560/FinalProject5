@@ -59,6 +59,7 @@ class ViewControllerGame: UIViewController {
                 if sum == 2 || sum == 3 || sum == 12{
                     loses = loses + 1
                     delegate.remove(cash: bet)
+                    delegate.dRemove(cash: bet)
                     dt += "game \(gameCount): role \(rollCount), \(dye1) + \(dye2): lost \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You lost", preferredStyle: .alert)
@@ -73,6 +74,7 @@ class ViewControllerGame: UIViewController {
                 else if sum == 7 || sum == 11{
                     wins = wins + 1
                     delegate.add(cash: bet)
+                    delegate.dAdd(cash: bet)
                     dt += "game \(gameCount): roll \(rollCount), \(dye1) + \(dye2): won \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You won!", preferredStyle: .alert)
@@ -114,6 +116,7 @@ class ViewControllerGame: UIViewController {
                 if sum2 == sum{
                     wins = wins + 1
                     delegate.add(cash: bet)
+                    delegate.dAdd(cash: bet)
                     dt += "game \(gameCount): roll \(rollCount), \(dye3) + \(dye4): won \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You won!", preferredStyle: .alert)
@@ -130,6 +133,7 @@ class ViewControllerGame: UIViewController {
                     logOutlet.text = dt
                     loses = loses + 1
                     delegate.remove(cash: bet)
+                    delegate.dRemove(cash: bet)
                     let alert = UIAlertController(title: "End", message: "You lost", preferredStyle: .alert)
                     
                     let okAction = UIAlertAction(title: "ok", style: .default, handler: nil)
@@ -179,14 +183,14 @@ class ViewControllerGame: UIViewController {
         if bet < delegate.show(){
          bet += 10
         }
-        betOutlet.text = String(bet)
+        betOutlet.text = "Place Bet $\(bet)"
     }
    
     @IBAction func decreaseBet(_ sender: Any) {
         if bet > 0{
             bet = bet - 10
         }
-        betOutlet.text = String(bet)
+        betOutlet.text = "Place Bet $\(bet)"
     }
     
     

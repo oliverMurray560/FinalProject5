@@ -6,14 +6,40 @@
 //
 
 import UIKit
-var money = 0
+let defaults = UserDefaults.standard
+var money = 1000
+var dMoney = 0
+var logins = 0
+var curLog = 0
 protocol ViewControllerDelegate{
-    
+    func viewLog() -> Int
+    func login(log : Int)
     func add(cash : Int)
     func show() -> Int
     func remove(cash : Int)
+    func dAdd(cash : Int)
+    func dRemove(cash : Int)
 }
 class ViewController: UIViewController, ViewControllerDelegate {
+    func viewLog() -> Int {
+        return curLog
+    }
+    
+    func login(log: Int) {
+        logins = logins + log
+        //print(login)
+    }
+    
+    func dRemove(cash: Int) {
+        dMoney = dMoney - cash
+    }
+    
+    func dAdd(cash: Int) {
+        dMoney = dMoney + cash
+    }
+    
+   
+    
     
     
     @IBOutlet weak var moneyLabel: UILabel!
@@ -39,13 +65,19 @@ class ViewController: UIViewController, ViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        add(cash: 1000)
+       // add(cash: 1000)
+        
+        logins = defaults.integer(forKey: "c")
+        login(log: 1)
+        defaults.setValue(logins, forKey: "c")
+        
     }
 
     
     override func viewDidAppear(_ animated: Bool) {
-        moneyLabel.text = String(show())
-        
+        //moneyLabel.text = String(show())
+        let x = show()
+        moneyLabel.text = "$\(x)"
         
         
         
@@ -53,13 +85,19 @@ class ViewController: UIViewController, ViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "crapsSegue"{
-           print("x")
+           
         let nvc = segue.destination as! ViewControllerGame
             nvc.delegate = self
         }
         else if segue.identifier == "warSegue"{
             let nvc = segue.destination as! ViewControllerWar
             nvc.delegate = self
+        }
+        else if segue.identifier == "logSegue"{
+            let nvc = segue.destination as! ViewControllerLog
+            nvc.delegate = self
+            
+            
         }
         
     }
