@@ -11,6 +11,8 @@ var money = 1000
 var dMoney = 0
 var logins = 0
 var curLog = 0
+
+// I love apples
 protocol ViewControllerDelegate{
     func viewLog() -> Int
     func login(log : Int)
