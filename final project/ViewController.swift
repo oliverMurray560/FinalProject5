@@ -11,9 +11,12 @@ var money = 1000
 var dMoney = 0
 var logins = 0
 var curLog = 0
+var log : String = ""
+var logs = [String]()
+var timesRan = 0
 
-// I love apples
 protocol ViewControllerDelegate{
+    func save()
     func viewLog() -> Int
     func login(log : Int)
     func add(cash : Int)
@@ -21,15 +24,43 @@ protocol ViewControllerDelegate{
     func remove(cash : Int)
     func dAdd(cash : Int)
     func dRemove(cash : Int)
+    func update()
+    func transfer() -> [String]
+    
 }
 class ViewController: UIViewController, ViewControllerDelegate {
+    func transfer() -> [String] {
+        return logs
+    }
+    
+    func update() {
+        
+        if timesRan == 0{
+            logs.append("Login: \(logins) Net Gain: $\(dMoney)")
+            timesRan = 1
+        }
+        else{
+        logs[logins - 1] = "Login: \(logins) Net Gain: $\(dMoney)"
+        }
+        defaults.setValue(logs, forKey: "listP")
+        
+    }//end of update function
+    
+    
+    
+    
+    
+    func save() {
+        defaults.setValue(money, forKey: "mP")
+    }
+    
     func viewLog() -> Int {
         return curLog
     }
     
     func login(log: Int) {
         logins = logins + log
-        //print(login)
+        
     }
     
     func dRemove(cash: Int) {
@@ -67,17 +98,32 @@ class ViewController: UIViewController, ViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       // add(cash: 1000)
+       
         
-        logins = defaults.integer(forKey: "c")
+       // money = defaults.integer(forKey: "m")
+        
+        
+        if let l = defaults.object(forKey: "listP"){
+            logs = l as! [String]
+        }
+        
+        logins = defaults.integer(forKey: "cP")
         login(log: 1)
-        defaults.setValue(logins, forKey: "c")
+        defaults.setValue(logins, forKey: "cP")
+    
+        money = defaults.integer(forKey: "mP")
+        
+        if logins <= 1{
+        money = 1000
+        }
+       
+        update()
         
     }
 
     
     override func viewDidAppear(_ animated: Bool) {
-        //moneyLabel.text = String(show())
+    
         let x = show()
         moneyLabel.text = "$\(x)"
         
@@ -85,7 +131,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+     
         if segue.identifier == "crapsSegue"{
            
         let nvc = segue.destination as! ViewControllerGame
@@ -101,6 +147,14 @@ class ViewController: UIViewController, ViewControllerDelegate {
             
             
         }
+        else if segue.identifier == "guessSegue"{
+            let nvc = segue.destination as! ViewControllerG
+            nvc.delegate = self
+            
+            
+            
+        }
+        
         
     }
     

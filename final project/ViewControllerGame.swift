@@ -34,7 +34,9 @@ class ViewControllerGame: UIViewController {
         super.viewDidLoad()
         money = delegate.show()
         moneyOutlet.text = "$\(money)"
-        
+        wins = defaults.integer(forKey: "a")
+        loses = defaults.integer(forKey: "b")
+        recordOutlet.text = "Wins: \(wins) Loses: \(loses)"
         //String(delegate.show())
         
     }
@@ -60,6 +62,8 @@ class ViewControllerGame: UIViewController {
                     loses = loses + 1
                     delegate.remove(cash: bet)
                     delegate.dRemove(cash: bet)
+                    delegate.save()
+                    delegate.update()
                     dt += "game \(gameCount): role \(rollCount), \(dye1) + \(dye2): lost \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You lost", preferredStyle: .alert)
@@ -75,6 +79,8 @@ class ViewControllerGame: UIViewController {
                     wins = wins + 1
                     delegate.add(cash: bet)
                     delegate.dAdd(cash: bet)
+                    delegate.save()
+                    delegate.update()
                     dt += "game \(gameCount): roll \(rollCount), \(dye1) + \(dye2): won \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You won!", preferredStyle: .alert)
@@ -117,6 +123,8 @@ class ViewControllerGame: UIViewController {
                     wins = wins + 1
                     delegate.add(cash: bet)
                     delegate.dAdd(cash: bet)
+                    delegate.save()
+                    delegate.update()
                     dt += "game \(gameCount): roll \(rollCount), \(dye3) + \(dye4): won \n"
                     logOutlet.text = dt
                     let alert = UIAlertController(title: "End", message: "You won!", preferredStyle: .alert)
@@ -134,6 +142,8 @@ class ViewControllerGame: UIViewController {
                     loses = loses + 1
                     delegate.remove(cash: bet)
                     delegate.dRemove(cash: bet)
+                    delegate.save()
+                    delegate.update()
                     let alert = UIAlertController(title: "End", message: "You lost", preferredStyle: .alert)
                     
                     let okAction = UIAlertAction(title: "ok", style: .default, handler: nil)
@@ -162,6 +172,8 @@ class ViewControllerGame: UIViewController {
             } //end loopCount2
             
             recordOutlet.text = "Wins: \(wins) Loses: \(loses)"
+            defaults.setValue(wins, forKey: "a")
+            defaults.setValue(loses, forKey: "b")
             money = delegate.show()
             moneyOutlet.text = "$\(money)"
         }

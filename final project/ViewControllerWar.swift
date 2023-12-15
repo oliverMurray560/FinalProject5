@@ -43,7 +43,10 @@ class ViewControllerWar: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        moneyOutlet.text = "$\(money)"
+        wins = defaults.integer(forKey: "7")
+        loses = defaults.integer(forKey: "8")
+        recordOutlet.text = "Wins: \(wins) Loses: \(loses)"
         // Do any additional setup after loading the view.
     }
     
@@ -107,6 +110,8 @@ class ViewControllerWar: UIViewController {
             curLoses = 0
             delegate.add(cash: bet)
             delegate.dAdd(cash: bet)
+            delegate.save()
+            delegate.update()
             recordOutlet.text = "Wins: \(wins) Loses: \(loses)"
         }
         else if curLoses == 3{
@@ -116,11 +121,15 @@ class ViewControllerWar: UIViewController {
             curLoses = 0
             delegate.remove(cash: bet)
             delegate.dRemove(cash: bet)
+            delegate.save()
+            delegate.update()
             roundLabel.text = "Current Round Wins: \(curWins) Loses: \(curLoses)"
         }
         
         money = delegate.show()
         moneyOutlet.text = "$\(money)"
+        defaults.setValue(wins, forKey: "7")
+        defaults.setValue(loses, forKey: "8")
     } //end of roll
     
 

@@ -27,7 +27,7 @@ class ViewControllerLog: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        logs = delegate.transfer()
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
 
@@ -35,7 +35,7 @@ class ViewControllerLog: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        logs = delegate.transfer()
     }
     
 
